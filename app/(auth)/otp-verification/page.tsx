@@ -36,9 +36,7 @@ export default function LoginPage() {
   return (
     <div className="flex flex-col h-screen">
       <div className="w-[100%] flex items-center justify-start">
-        {/* <div className="flex flex-col items-start justify-center"> */}
         <div className="font-bold">Verify OTP</div>
-        {/* </div> */}
       </div>
       <div className="w-[100%] flex items-center justify-start pt-[1rem]">
         <InputOtp
@@ -47,7 +45,7 @@ export default function LoginPage() {
           onValueChange={setOtp}
           onChange={onOtpChange}
           onComplete={onOtpVerify}
-          color="primary"
+          variant="bordered"
           fullWidth
           classNames={{ segmentWrapper: "w-[100%] justify-evenly" }}
         />
