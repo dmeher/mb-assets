@@ -79,7 +79,7 @@ export default function LoginPage() {
         <Button
           color="primary"
           fullWidth
-          className="font-bold tracking-[.25rem]"
+          className="font-bold tracking-[.25rem] h-[3rem] text-large"
           isDisabled={!isLoginEnable}
           onPress={onLogin}
         >
