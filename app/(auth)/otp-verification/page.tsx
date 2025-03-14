@@ -44,7 +44,6 @@ export default function LoginPage() {
           value={otp}
           onValueChange={setOtp}
           onChange={onOtpChange}
-          onComplete={onOtpVerify}
           variant="bordered"
           size="lg"
           fullWidth
