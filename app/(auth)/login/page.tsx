@@ -31,7 +31,10 @@ export default function LoginPage() {
             startContent={<Image src="./images/IN.png" className="w-[2rem]" />}
             className="w-[100%] tracking-widest"
             fullWidth
-            classNames={{input: "text-[1.25rem] tracking-[.5rem] font-extrabold", innerWrapper: "gap-[1rem]"}}
+            pattern="^[6-9]\d{9}$"
+            errorMessage={<span>Please enter a valid mobile number.</span>}
+            isClearable
+            classNames={{label: "font-semibold tracking-widest", input: "text-[1.25rem] tracking-[.5rem] font-extrabold", innerWrapper: "gap-[1rem]"}}
           />
         </div>
       </div>
