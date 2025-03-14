@@ -4,12 +4,15 @@ import { Image } from "@heroui/image";
 import { Input } from "@heroui/input";
 import { Button } from "@heroui/button";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 // import "./style.css";
 
 export default function LoginPage() {
   const mobileNoRegEx = "^[6-9]\\d{9}$";
   const [isLoginEnable, setIsLoginEnable] = useState<boolean>(false);
   const [mobileNumber, setMobileNumber] = useState<string>("");
+
+  const router = useRouter();
 
   const validateMobileNo = (value: string) => {
     if (value.length === 10 && new RegExp(mobileNoRegEx).test(value)) {
@@ -35,6 +38,7 @@ export default function LoginPage() {
 
   const onLogin = () => {
     console.log("Mobile Number: ", mobileNumber);
+    router.push("/otp-verification");
   };
 
   return (
