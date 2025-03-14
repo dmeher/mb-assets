@@ -1,5 +1,6 @@
 import { Image } from "@heroui/image";
 import { Input } from "@heroui/input";
+import "./style.css"
 
 export default function LoginPage() {
   return (
@@ -17,12 +18,12 @@ export default function LoginPage() {
           <div className="font-extrabold">MB Grocery</div>
         </div>
       </div>
-      <div className="w-[100%] flex items-center justify-start">
-        <div className="flex flex-col items-start justify-center">
+      <div className="w-[100%] flex items-center justify-start pt-[1rem]">
+        <div className="w-[100%] flex flex-col items-start justify-center">
           <Input
             key={"mobile"}
             label="Mobile"
-            labelPlacement={"inside"}
+            labelPlacement={"outside"}
             type="tel"
             variant="underlined"
             maxLength={10}
@@ -30,6 +31,7 @@ export default function LoginPage() {
             startContent={<Image src="./images/IN.png" className="w-[2rem]" />}
             className="w-[100%] tracking-widest"
             fullWidth
+            classNames={{input: "text-[1.25rem] tracking-[.5rem]", innerWrapper: "gap-[1rem]"}}
           />
         </div>
       </div>
