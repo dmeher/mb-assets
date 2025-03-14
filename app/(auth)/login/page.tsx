@@ -4,6 +4,7 @@ import { Image } from "@heroui/image";
 import { Input } from "@heroui/input";
 import { Button } from "@heroui/button";
 import { useState } from "react";
+// import "./style.css";
 
 export default function LoginPage() {
   const mobileNoRegEx = "^[6-9]\\d{9}$";
@@ -60,7 +61,12 @@ export default function LoginPage() {
           variant="underlined"
           maxLength={10}
           minLength={10}
-          startContent={<Image src="./images/IN.png" className="w-[2rem]" />}
+          startContent={
+            <Image
+              src="./images/IN.png"
+              className="w-[2rem] rounded-none"
+            />
+          }
           className="w-[100%] tracking-widest"
           fullWidth
           pattern={mobileNoRegEx}
