@@ -1,12 +1,13 @@
 import "@/styles/globals.css";
+import "./styles.css";
 import { Metadata, Viewport } from "next";
-import { Link } from "@heroui/link";
+// import { Link } from "@heroui/link";
 // import clsx from "clsx";
 import { Providers } from "./providers";
 import { siteConfig } from "@/config/site";
 // import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
-import "./styles.css";
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
   title: {
@@ -54,6 +55,7 @@ export default function RootLayout({
             </footer> */}
           </div>
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
