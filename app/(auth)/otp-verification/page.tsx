@@ -6,7 +6,7 @@ import { InputOtp } from "@heroui/input-otp";
 import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
-  const otpLength = 6;
+  const otpLength = 4;
   const [isVerifyEnable, setIsVerifyEnable] = useState<boolean>(false);
   const [otp, setOtp] = useState<string>("");
 
@@ -46,6 +46,7 @@ export default function LoginPage() {
           onChange={onOtpChange}
           onComplete={onOtpVerify}
           variant="bordered"
+          size="lg"
           fullWidth
           classNames={{ segmentWrapper: "w-[100%] justify-evenly" }}
         />
