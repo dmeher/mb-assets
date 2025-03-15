@@ -10,7 +10,7 @@ export default function Home() {
           <i className="bi bi-geo-alt-fill text-[1.5rem] text-invert"></i>
           <div className="font-bold">Chhepapali, Nuabasti</div>
         </div>
-        <div className="w-[100%]">
+        <div className="w-[80%]">
           <Input
             variant="bordered"
             endContent={
