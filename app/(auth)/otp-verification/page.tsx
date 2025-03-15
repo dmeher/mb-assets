@@ -34,7 +34,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen px-6">
       <div className="w-[100%] flex items-center justify-start">
         <div className="font-bold">Verify OTP</div>
       </div>

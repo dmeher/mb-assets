@@ -42,7 +42,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen px-6">
       {/* <div className="w-[100%] flex items-center justify-start">
         <div className="flex flex-col items-start justify-center">
           <div className="font-bold">Get your groceries with</div>
