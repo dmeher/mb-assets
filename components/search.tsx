@@ -171,13 +171,13 @@ export default function SearchProduct() {
       {searchResult.length > 0 && (
         <Listbox
           classNames={{
-            base: "max-w-xs",
+            base: "max-w-xs bg-default-200 mt-[.25rem] rounded-lg",
             list: "max-h-[300px] overflow-scroll",
           }}
           defaultSelectedKeys={["1"]}
           items={searchResult}
           label="Assigned to"
-          selectionMode="multiple"
+          selectionMode="none"
           variant="flat"
           onSelectionChange={onProductSelect}
         >
