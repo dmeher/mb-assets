@@ -1,14 +1,26 @@
-import NavigationBar from "@/components/navigation-bar";
+"use client";
+
+import { Input } from "@heroui/input";
 
 export default function Home() {
   return (
     <div className="h-screen">
-      <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 px-6">
-        Start shopping!
+      <section className="flex flex-col items-center justify-center gap-4 px-6">
+        <div className="flex items-center justify-center gap-3 w-screen">
+          <i className="bi bi-geo-alt-fill text-[1.5rem] text-black"></i>
+          <div className="font-semibold">Chhepapali, Nuabasti</div>
+        </div>
+        <div className="w-[100%]">
+          <Input
+            variant="bordered"
+            endContent={
+              <i className="bi bi-search text-[1.5rem] text-primary pr-[1rem]"></i>
+            }
+            classNames={{ inputWrapper: "h-[3.5rem] border-primary", input: "text-[1.25rem]" }}
+            color="primary"
+          />
+        </div>
       </section>
-      <div className="fixed bottom-[0] w-screen shadow-[2px_-5px_25px_0px_rgba(85,_94,_88,_0.5)] rounded-t-[1rem] pt-[.5rem] px-[1rem] flex items-center justify-center">
-        <NavigationBar />
-      </div>
     </div>
   );
 }
