@@ -8,7 +8,7 @@ export default function NavigationBar() {
   const [currentPage, setCurrentPage] = useState("shop");
 
   return (
-    <div className="flex justify-around w-[100%] items-center h-[4rem]">
+    <div className="flex justify-around w-[100%] items-center h-[3rem]">
       <Link className="flex justify-center items-center">
         <Button
           className="flex flex-col gap-[.125rem] items-center justify-center h-[2rem] w-[2rem] bg-transparent overflow-visible"
@@ -18,13 +18,13 @@ export default function NavigationBar() {
         >
           <i
             className={
-              "bi bi-shop text-[1.75rem] " +
+              "bi bi-shop text-[1.25rem] " +
               (currentPage === "shop" ? "text-primary" : "text-invert")
             }
           ></i>
           <div
             className={
-              "font-semibold text-[1rem] pt-[.5rem] " +
+              "font-semibold text-[1rem] pt-[.25rem] " +
               (currentPage === "shop" ? "text-primary" : "text-invert")
             }
           >
@@ -41,13 +41,13 @@ export default function NavigationBar() {
         >
           <i
             className={
-              "bi bi-search text-[1.75rem] " +
+              "bi bi-search text-[1.25rem] " +
               (currentPage === "explore" ? "text-primary" : "text-invert")
             }
           ></i>
           <div
             className={
-              "font-semibold text-[1rem] pt-[.5rem] " +
+              "font-semibold text-[1rem] pt-[.25rem] " +
               (currentPage === "explore" ? "text-primary" : "text-invert")
             }
           >
@@ -64,13 +64,13 @@ export default function NavigationBar() {
         >
           <i
             className={
-              "bi bi-basket text-[1.75rem] " +
+              "bi bi-basket text-[1.25rem] " +
               (currentPage === "cart" ? "text-primary" : "text-invert")
             }
           ></i>
           <div
             className={
-              "font-semibold text-[1rem] pt-[.5rem] " +
+              "font-semibold text-[1rem] pt-[.25rem] " +
               (currentPage === "cart" ? "text-primary" : "text-invert")
             }
           >
@@ -87,13 +87,13 @@ export default function NavigationBar() {
         >
           <i
             className={
-              "bi bi-person text-[1.75rem] " +
+              "bi bi-person-circle text-[1.25rem] " +
               (currentPage === "account" ? "text-primary" : "text-invert")
             }
           ></i>
           <div
             className={
-              "font-semibold text-[1rem] pt-[.5rem] " +
+              "font-semibold text-[1rem] pt-[.25rem] " +
               (currentPage === "account" ? "text-primary" : "text-invert")
             }
           >
