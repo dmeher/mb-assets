@@ -8,7 +8,7 @@ export default function Home() {
       <section className="flex flex-col items-center justify-center gap-4 px-6">
         <div className="flex items-center justify-center gap-3 w-screen">
           <i className="bi bi-geo-alt-fill text-[1.5rem] text-black"></i>
-          <div className="font-semibold">Chhepapali, Nuabasti</div>
+          <div className="font-bold">Chhepapali, Nuabasti</div>
         </div>
         <div className="w-[100%]">
           <Input
