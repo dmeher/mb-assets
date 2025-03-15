@@ -1,6 +1,6 @@
 "use client";
 
-import { Input } from "@heroui/input";
+import SearchProduct from "@/components/search";
 
 export default function Home() {
   return (
@@ -10,17 +10,7 @@ export default function Home() {
           <i className="bi bi-geo-alt-fill text-[1.5rem] text-invert"></i>
           <div className="font-bold">Chhepapali, Nuabasti</div>
         </div>
-        <div className="w-[80%]">
-          <Input
-            variant="faded"
-            startContent={
-              <i className="bi bi-search text-[1.25rem] pr-[.5rem]"></i>
-            }
-            classNames={{ inputWrapper: "h-[3rem]", input: "text-[1rem] font-semibold" }}
-            color="primary"
-            isClearable
-          />
-        </div>
+        <SearchProduct />
       </section>
     </div>
   );
