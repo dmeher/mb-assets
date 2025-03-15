@@ -18,6 +18,7 @@ export default function Home() {
             }
             classNames={{ inputWrapper: "h-[3rem]", input: "text-[1rem]" }}
             color="primary"
+            isClearable
           />
         </div>
       </section>
