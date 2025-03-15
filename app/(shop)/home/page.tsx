@@ -14,7 +14,7 @@ export default function Home() {
           <Input
             variant="bordered"
             endContent={
-              <i className="bi bi-search text-[1.5rem] pr-[1rem]"></i>
+              <i className="bi bi-search text-[1.5rem] pr-[.5rem]"></i>
             }
             classNames={{ inputWrapper: "h-[3rem]", input: "text-[1rem]" }}
             color="primary"
