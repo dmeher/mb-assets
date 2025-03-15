@@ -12,9 +12,9 @@ export default function Home() {
         </div>
         <div className="w-[80%]">
           <Input
-            variant="bordered"
-            endContent={
-              <i className="bi bi-search text-[1.5rem] pr-[.5rem]"></i>
+            variant="faded"
+            startContent={
+              <i className="bi bi-search text-[1.25rem] pr-[.5rem]"></i>
             }
             classNames={{ inputWrapper: "h-[3rem]", input: "text-[1rem]" }}
             color="primary"
