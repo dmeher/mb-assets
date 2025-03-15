@@ -7,7 +7,7 @@ export default function Home() {
     <div className="h-screen">
       <section className="flex flex-col items-center justify-center gap-4 px-6">
         <div className="flex items-center justify-center gap-3 w-screen">
-          <i className="bi bi-geo-alt-fill text-[1.5rem] text-black"></i>
+          <i className="bi bi-geo-alt-fill text-[1.5rem] text-invert"></i>
           <div className="font-bold">Chhepapali, Nuabasti</div>
         </div>
         <div className="w-[100%]">
