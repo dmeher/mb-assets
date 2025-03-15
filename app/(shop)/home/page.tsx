@@ -16,7 +16,7 @@ export default function Home() {
             startContent={
               <i className="bi bi-search text-[1.25rem] pr-[.5rem]"></i>
             }
-            classNames={{ inputWrapper: "h-[3rem]", input: "text-[1rem]" }}
+            classNames={{ inputWrapper: "h-[3rem]", input: "text-[1rem] font-semibold" }}
             color="primary"
             isClearable
           />
