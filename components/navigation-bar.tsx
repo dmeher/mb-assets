@@ -1,6 +1,6 @@
 export default function NavigationBar() {
   return (
-    <div className="flex justify-between w-[100%] flex items-center justify-center">
+    <div className="flex justify-between w-[100%] items-center">
         <div>Shop</div>
         <div>Explore</div>
         <div>Cart</div>
