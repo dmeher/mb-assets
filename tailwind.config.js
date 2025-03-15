@@ -22,7 +22,26 @@ const config = {
     },
   },
   darkMode: "class",
-  plugins: [heroui()],
+  plugins: [heroui({
+    themes: {
+      light: {
+        colors: {
+          invert: {
+            foreground: "#FFFFFF",
+            DEFAULT: "#000000",
+          },
+        },
+      },
+      dark: {
+        colors: {
+          invert: {
+            foreground: "#000000",
+            DEFAULT: "#FFFFFF",
+          },
+        },
+      },
+    },
+  })],
 };
 
 export default config;
