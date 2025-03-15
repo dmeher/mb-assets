@@ -8,10 +8,10 @@ export default function NavigationBar() {
   const [currentPage, setCurrentPage] = useState("shop");
 
   return (
-    <div className="flex justify-around w-[100%] items-center">
-      <Link className="flex flex-col justify-center items-center gap-[.125rem]">
+    <div className="flex justify-around w-[100%] items-center h-[4rem]">
+      <Link className="flex justify-center items-center">
         <Button
-          className="flex items-center justify-center h-[2rem] w-[2rem] bg-transparent"
+          className="flex flex-col gap-[.125rem] items-center justify-center h-[2rem] w-[2rem] bg-transparent overflow-visible"
           onPress={() => setCurrentPage("shop")}
           isIconOnly
           variant="flat"
@@ -22,19 +22,19 @@ export default function NavigationBar() {
               (currentPage === "shop" ? "text-primary" : "text-black")
             }
           ></i>
+          <div
+            className={
+              "font-semibold text-[1rem] pt-[.5rem] " +
+              (currentPage === "shop" ? "text-primary" : "text-black")
+            }
+          >
+            Shop
+          </div>
         </Button>
-        <div
-          className={
-            "font-semibold text-[1rem] " +
-            (currentPage === "shop" ? "text-primary" : "text-black")
-          }
-        >
-          Shop
-        </div>
       </Link>
-      <Link className="flex flex-col justify-center items-center gap-[.125rem]">
+      <Link className="flex justify-center items-center">
         <Button
-          className="flex items-center justify-center h-[2rem] w-[2rem] bg-transparent"
+          className="flex flex-col gap-[.125rem] items-center justify-center h-[2rem] w-[2rem] bg-transparent overflow-visible"
           onPress={() => setCurrentPage("explore")}
           isIconOnly
           variant="flat"
@@ -45,19 +45,19 @@ export default function NavigationBar() {
               (currentPage === "explore" ? "text-primary" : "text-black")
             }
           ></i>
+          <div
+            className={
+              "font-semibold text-[1rem] pt-[.5rem] " +
+              (currentPage === "explore" ? "text-primary" : "text-black")
+            }
+          >
+            Explore
+          </div>
         </Button>
-        <div
-          className={
-            "font-semibold text-[1rem] " +
-            (currentPage === "explore" ? "text-primary" : "text-black")
-          }
-        >
-          Explore
-        </div>
       </Link>
-      <Link className="flex flex-col justify-center items-center gap-[.125rem]">
+      <Link className="flex justify-center items-center">
         <Button
-          className="flex items-center justify-center h-[2rem] w-[2rem] bg-transparent"
+          className="flex flex-col gap-[.125rem] items-center justify-center h-[2rem] w-[2rem] bg-transparent overflow-visible"
           onPress={() => setCurrentPage("cart")}
           isIconOnly
           variant="flat"
@@ -68,25 +68,19 @@ export default function NavigationBar() {
               (currentPage === "cart" ? "text-primary" : "text-black")
             }
           ></i>
+          <div
+            className={
+              "font-semibold text-[1rem] pt-[.5rem] " +
+              (currentPage === "cart" ? "text-primary" : "text-black")
+            }
+          >
+            Cart
+          </div>
         </Button>
-        <div
-          className={
-            "font-semibold text-[1rem] " +
-            (currentPage === "cart" ? "text-primary" : "text-black")
-          }
-        >
-          Cart
-        </div>
       </Link>
-      {/* <div className="flex flex-col justify-center items-center gap-[.125rem]">
-        <div className="flex items-center justify-center h-[2rem] w-[2rem]">
-          <i className="bi bi-heart text-[1.75rem] text-secondary"></i>
-        </div>
-        <div className="font-semibold text-secondary text-[1rem]">Favourite</div>
-      </div> */}
-      <Link className="flex flex-col justify-center items-center gap-[.125rem]">
+      <Link className="flex justify-center items-center">
         <Button
-          className="flex items-center justify-center h-[2rem] w-[2rem] bg-transparent"
+          className="flex flex-col gap-[.125rem] items-center justify-center h-[2rem] w-[2rem] bg-transparent overflow-visible"
           onPress={() => setCurrentPage("account")}
           isIconOnly
           variant="flat"
@@ -97,15 +91,15 @@ export default function NavigationBar() {
               (currentPage === "account" ? "text-primary" : "text-black")
             }
           ></i>
+          <div
+            className={
+              "font-semibold text-[1rem] pt-[.5rem] " +
+              (currentPage === "account" ? "text-primary" : "text-black")
+            }
+          >
+            Account
+          </div>
         </Button>
-        <div
-          className={
-            "font-semibold text-[1rem] " +
-            (currentPage === "account" ? "text-primary" : "text-black")
-          }
-        >
-          Account
-        </div>
       </Link>
     </div>
   );
