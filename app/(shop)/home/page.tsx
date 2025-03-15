@@ -16,7 +16,7 @@ export default function Home() {
             endContent={
               <i className="bi bi-search text-[1.5rem] pr-[1rem]"></i>
             }
-            classNames={{ inputWrapper: "h-[3.5rem]", input: "text-[1.25rem]" }}
+            classNames={{ inputWrapper: "h-[3rem]", input: "text-[1rem]" }}
             color="primary"
           />
         </div>
