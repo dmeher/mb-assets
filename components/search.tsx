@@ -167,6 +167,7 @@ export default function SearchProduct() {
           inputWrapper: "h-[3rem]",
           input: "text-[1rem] font-semibold",
         }}
+        placeholder="Search your item..."
         color="primary"
         isClearable
         onClear={() => setSearchResult([])}
