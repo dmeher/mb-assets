@@ -138,14 +138,18 @@ export default function SearchProduct() {
   const [searchResult, setSearchResult] = useState<Product[]>([]);
 
   const searchProduct = (e: ChangeEvent<HTMLInputElement>) => {
-    const matcher = new RegExp(`^${e.target.value.toLowerCase()}`, "g");
-    const searchedProducts =
-      products.filter(
-        (product) =>
-          RegExp(matcher).exec(product.name.toLowerCase()) ||
-          RegExp(matcher).exec(product.description.toLowerCase())
-      ) ?? [];
-    setSearchResult(searchedProducts);
+    if (e.target.value.length) {
+      const matcher = new RegExp(`^${e.target.value.toLowerCase()}`, "g");
+      const searchedProducts =
+        products.filter(
+          (product) =>
+            RegExp(matcher).exec(product.name.toLowerCase()) ||
+            RegExp(matcher).exec(product.description.toLowerCase())
+        ) ?? [];
+      setSearchResult(searchedProducts);
+    } else {
+      setSearchResult([]);
+    }
   };
 
   const onProductSelect = (keys: Selection) => {
