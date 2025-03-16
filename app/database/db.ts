@@ -24,8 +24,8 @@ async function isDatabaseConnected() {
   console.log('Hi8');
   try {
     // A simple query to check if the connection is alive
-    await client.query("SELECT NOW()");
-    console.log('Hi9');
+    const now = await client.query("SELECT NOW()");
+    console.log('Hi9', now);
     return true;
   } catch (error) {
     console.log('Hi10');
