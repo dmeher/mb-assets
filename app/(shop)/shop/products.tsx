@@ -12,6 +12,7 @@ export default function Products({ callback }: Readonly<ProductsProps>) {
   const [productList, setProductList] = useState<Product[]>([]);
 
   const fetchProducts = async (): Promise<Product[]> => {
+    console.log("process.env", process.env)
     const response = await axios.get("/api/products");
     return response.data;
   };
