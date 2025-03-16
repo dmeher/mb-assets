@@ -37,7 +37,7 @@ export async function GET(req: Request) {
       try {
         await connect();
         const result: QueryResult<Product> = await client.query(
-          "SELECT * FROM products"
+          "SELECT * FROM public.products"
         );
         return new Response(JSON.stringify(result.rows), {
           status: 200,
