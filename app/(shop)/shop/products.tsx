@@ -29,7 +29,7 @@ export default function Products({ callback }: Readonly<ProductsProps>) {
   }, []);
 
   return (
-    <section className="flex flex-col items-center justify-center gap-1 px-6">
+    <section className="flex flex-col items-center justify-center gap-1">
       {productList.map((product) => {
         return (
           <div
