@@ -1,6 +1,7 @@
 "use client";
 
 import { Product } from "@/app/api/products/route";
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 interface ProductsProps {
@@ -11,8 +12,8 @@ export default function Products({ callback }: Readonly<ProductsProps>) {
   const [productList, setProductList] = useState<Product[]>([]);
 
   const fetchProducts = async (): Promise<Product[]> => {
-    const data = await fetch("/api/products");
-    return data.json();
+    const response = await axios.get("/api/products");
+    return response.data;
   };
 
   useEffect(() => {

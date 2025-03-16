@@ -9,8 +9,9 @@ export const client = new Client({
 });
 
 export async function connect() {
-  await client.connect();
-  // if (!client._connected) {
-  //   await client.connect();
-  // }
+  try {
+    await client.connect();
+  } catch (error) {
+    console.error("Database is already connected:", error);
+  }
 }
