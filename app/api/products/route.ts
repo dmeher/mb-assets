@@ -31,6 +31,7 @@ interface ProductPayload {
 
 export async function GET(req: Request) {
   if (req.method === "GET") {
+    // const isAuthorized = await isAuthenticated();
     const isAuthorized = true;
     if (isAuthorized) {
       try {
