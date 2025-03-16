@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { client, connect } from "@/app/database/db";
+import { pool } from "@/app/database/db";
 
 interface User {
   user_id: number;
@@ -19,8 +19,8 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { username, password } = body as LoginPayload;
     try {
-      await connect();
-      const result = await client.query<User>(
+      // await connect();
+      const result = await pool.query<User>(
         "SELECT * FROM users WHERE username = $1",
         [username]
       );

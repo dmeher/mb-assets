@@ -1,4 +1,4 @@
-import { client, connect } from "@/app/database/db";
+import { pool } from "@/app/database/db";
 import bcrypt from "bcrypt";
 
 interface User {
@@ -26,10 +26,10 @@ export async function POST(req: Request) {
     const saltRounds = 10; // Adjust as needed
 
     try {
-      await connect();
+      // await connect();
 
       // Check if username or email already exists
-      const existingUser = await client.query<User>(
+      const existingUser = await pool.query<User>(
         "SELECT * FROM users WHERE username = $1 OR email = $2",
         [username, email]
       );
@@ -45,7 +45,7 @@ export async function POST(req: Request) {
 
       const passwordHash = await bcrypt.hash(password, saltRounds);
 
-      await client.query(
+      await pool.query(
         "INSERT INTO users (username, password_hash, email, full_name) VALUES ($1, $2, $3, $4)",
         [username, passwordHash, email, fullName]
       );
