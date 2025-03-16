@@ -1,5 +1,4 @@
 import { client, connect } from "@/app/database/db";
-import { NextApiRequest } from "next";
 import { QueryResult } from "pg";
 import { isAuthenticated } from "../_utils/util";
 
@@ -30,7 +29,7 @@ interface ProductPayload {
   pricePerQuantity: { [index: string]: number }; // or a more specific type if you know the JSON structure
 }
 
-export async function GET(req: NextApiRequest) {
+export async function GET(req: Request) {
   if (req.method === "GET") {
     const isAuthorized = await isAuthenticated();
 
