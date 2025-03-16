@@ -1,4 +1,4 @@
-import { client, connect } from "@/app/database/db";
+import { pool } from "@/app/database/db";
 import { QueryResult } from "pg";
 import { isAuthenticated } from "../_utils/util";
 
@@ -35,8 +35,8 @@ export async function GET(req: Request) {
     const isAuthorized = true;
     if (isAuthorized) {
       try {
-        await connect();
-        const result: QueryResult<Product> = await client.query(
+        // await connect();
+        const result: QueryResult<Product> = await pool.query(
           "SELECT * FROM public.products"
         );
         return new Response(JSON.stringify(result.rows), {
@@ -84,9 +84,9 @@ export async function POST(req: Request) {
       } = body as ProductPayload;
 
       try {
-        await connect();
+        // await connect();
 
-        const result = await client.query(
+        const result = await pool.query(
           "INSERT INTO products (product_name, description, base_price, stock_quantity, category, brand, sku, image_url, price_per_quantity) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)",
           [
             productName,
