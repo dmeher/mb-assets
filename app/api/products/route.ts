@@ -33,6 +33,8 @@ export async function GET(req: Request) {
   if (req.method === "GET") {
     // const isAuthorized = await isAuthenticated();
     const isAuthorized = true;
+    console.log("pool", pool);
+    
     if (isAuthorized) {
       try {
         // await connect();
