@@ -6,6 +6,7 @@ export const client = new Client({
   database: process.env.DB_DATABASE,
   password: process.env.DB_PASSWORD,
   port: parseInt(process.env.DB_PORT ?? "5432", 10),
+  ssl: true
 });
 
 export async function connect() {
