@@ -49,8 +49,6 @@ export async function GET(req: Request) {
           "SELECT p.*, COALESCE(array_agg(json_build_object('imageUrl', pi.image_url, 'isThumbnail', pi.is_thumbnail)) FILTER (WHERE pi.image_url IS NOT NULL), '{}'::JSON[]) AS images FROM products p LEFT JOIN product_images pi ON p.product_id = pi.product_id GROUP BY p.product_id ORDER BY created_at DESC"
         );
 
-        console.log("Result: ", result.rows);
-
         return new Response(JSON.stringify(result.rows), {
           status: 200,
         });

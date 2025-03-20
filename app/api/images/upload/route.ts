@@ -34,8 +34,6 @@ export const config = {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    console.log("Body", body);
-
     const imageList: ProductImagesPayload[] = [];
 
     body.buffers.forEach(async (buffer: ArrayBuffer, index: number) => {

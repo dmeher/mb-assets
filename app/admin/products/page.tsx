@@ -200,14 +200,6 @@ export default function ProductPage() {
     });
   }, []);
 
-  //   useEffect(() => {
-  //     const images = selectedImageFiles.map<ProductImagesPayload>(imageFile => {
-  //         return {
-  //             imageUrl: imageFile.
-  //         }
-  //     })
-  //   }, [selectedImageFiles]);
-
   const getKeyValue = (item: Product, key: Key) => {
     let value = "";
     Object.entries(item).forEach((i) => {
@@ -217,11 +209,7 @@ export default function ProductPage() {
   };
 
   const onOpenAddProduct = (e: PressEvent) => {
-    setIsLoading(true);
-    setTimeout(() => {
-      onOpen();
-      setIsLoading(false);
-    }, 500);
+    onOpen();
   };
 
   const onAddProduct = async (e: FormEvent<HTMLFormElement>) => {
@@ -230,13 +218,8 @@ export default function ProductPage() {
 
     try {
       const productResult = await axios.post("/api/products", productData);
-
-      console.log("Response Data: ", productResult.data);
       const productId = productResult.data.productId;
-
       const allImages = [...selectedImageFiles, thumbnailImageFile];
-
-      console.log("allImages", allImages);
 
       const arrayBuffers: ArrayBuffer[] = [];
       const contentTypes: string[] = [];
@@ -259,8 +242,6 @@ export default function ProductPage() {
         thumbnailList: isThumbnailList,
       });
 
-      console.log("Payload: ", payload);
-
       axios
         .post<ImageUploadResponse>("/api/images/upload", payload, {
           headers: {
@@ -268,13 +249,6 @@ export default function ProductPage() {
           },
         })
         .then((response) => {
-          console.log("Response: ", response.data);
-          //   const images = productImages;
-          //   images.push({
-          //     productId: productId,
-          //     imageUrl: response.data.filename,
-          //   });
-          //   setProductImages(images);
           const imageFileList: ProductImagesPayload[] = [];
           response.data.filePathList.forEach((image) => {
             imageFileList.push({
@@ -282,14 +256,6 @@ export default function ProductPage() {
               imageUrl: image.imageUrl,
               isThumbnail: image.isThumbnail,
             });
-            // setProductImages((prev) => [
-            //   ...prev,
-            //   {
-            //     productId,
-            //     imageUrl: image.imageUrl,
-            //     isThumbnail: image.isThumbnail,
-            //   },
-            // ]);
           });
 
           setProductImages(imageFileList);
@@ -298,17 +264,16 @@ export default function ProductPage() {
             .post("/api/images", imageFileList)
             .then((response) => {
               if (response.data) {
-                console.log("Image url inserted to DB.");
+                addToast({
+                  title: "Saved",
+                  description: "Product saved successfully",
+                });
               }
             })
             .catch((error) => {
               console.log("Error: ", error);
             })
             .finally(() => {
-              addToast({
-                title: "Saved",
-                description: "Product saved successfully",
-              });
               fetchProducts().then((response) => {
                 const products = response.map((product) => {
                   return {
@@ -330,119 +295,6 @@ export default function ProductPage() {
             description: "Error uploading image",
           });
         })
-        .finally(() => {
-          console.log("Imagesssss: ", productImages);
-
-          //   axios
-          //     .post("/api/images", productImages)
-          //     .then((response) => {
-          //       if (response.data) {
-          //         console.log("Image url inserted to DB.");
-          //       }
-          //     })
-          //     .catch((error) => {
-          //       console.log("Error: ", error);
-          //     })
-          //     .finally(() => {
-          //       addToast({
-          //         title: "Saved",
-          //         description: "Product saved successfully",
-          //       });
-          //     });
-        });
-
-      //   axios
-      //     .post("/api/images/upload", arrayBuffer, {
-      //       headers: {
-      //         "Content-Type": "application/json",
-      //       },
-      //     })
-      //     .then((response) => {
-      //       console.log("Response: ", response.data);
-      //       const images = productImages;
-      //       images.push({
-      //         productId: productId,
-      //         imageUrl: response.data.filename,
-      //       });
-      //       setProductImages(images);
-      //     })
-      //     .catch((error) => {
-      //       setIsLoading(false);
-      //       console.error("Error uploading image:", error);
-      //       addToast({
-      //         title: "Error",
-      //         description: "Error uploading image",
-      //       });
-      //     })
-      //     .finally(() => {
-      //       console.log("Imagesssss: ", productImages);
-
-      //       axios
-      //         .post("/api/images", productImages)
-      //         .then((response) => {
-      //           if (response.data) {
-      //             console.log("Image url inserted to DB.");
-      //           }
-      //         })
-      //         .catch((error) => {
-      //           console.log("Error: ", error);
-      //         })
-      //         .finally(() => {
-      //           addToast({
-      //             title: "Saved",
-      //             description: "Product saved successfully",
-      //           });
-      //         });
-      //     });
-
-      // selectedImageFiles.forEach(async (file) => {
-      //   const arrayBuffer = await file.file?.arrayBuffer();
-      //   const contentType = file.file?.type;
-
-      //   axios
-      //     .post("/api/images/upload", arrayBuffer, {
-      //       headers: {
-      //         "Content-Type": contentType ?? "",
-      //       },
-      //     })
-      //     .then((response) => {
-      //       console.log("Response: ", response.data);
-      //       const images = productImages;
-      //       images.push({
-      //         productId: productId,
-      //         imageUrl: response.data.filename,
-      //       });
-      //       setProductImages(images);
-      //     })
-      //     .catch((error) => {
-      //       setIsLoading(false);
-      //       console.error("Error uploading image:", error);
-      //       addToast({
-      //         title: "Error",
-      //         description: "Error uploading image",
-      //       });
-      //     })
-      //     .finally(() => {
-      //       console.log("Imagesssss: ", productImages);
-
-      //       axios
-      //         .post("/api/images", productImages)
-      //         .then((response) => {
-      //           if (response.data) {
-      //             console.log("Image url inserted to DB.");
-      //           }
-      //         })
-      //         .catch((error) => {
-      //           console.log("Error: ", error);
-      //         })
-      //         .finally(() => {
-      //           addToast({
-      //             title: "Saved",
-      //             description: "Product saved successfully",
-      //           });
-      //         });
-      //     });
-      // });
     } catch (error) {
       addToast({
         title: "Error",
@@ -450,7 +302,6 @@ export default function ProductPage() {
       });
       console.error("Error uploading image:", error);
     } finally {
-      console.log("Images: ", productImages);
       setIsLoading(false);
       onClose();
       fetchProducts().then((response) => {
@@ -505,14 +356,6 @@ export default function ProductPage() {
         fileName: thumbnailImageFileName,
         isThumbnail: true,
       });
-      // setProductData((prev) => ({
-      //   ...prev,
-      //   thumbnail: {
-      //     base64String: thumbnailImageUrl,
-      //     file: thumbnailImageFile,
-      //     fileName: thumbnailImageFileName,
-      //   },
-      // }));
     }
   };
 

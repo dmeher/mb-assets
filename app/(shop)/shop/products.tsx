@@ -21,9 +21,6 @@ export default function Products({ callback }: Readonly<ProductsProps>) {
       const products = response;
       setProductList(products);
       callback(products);
-      products.forEach((product) => {
-        console.log(product.product_name);
-      });
     });
   }, []);
 
