@@ -56,6 +56,10 @@ const columns = [
     key: "stock_quantity",
     label: "STOCK",
   },
+  {
+    key: "action",
+    label: "ACTION",
+  },
 ];
 
 const animals = [
@@ -740,6 +744,12 @@ export default function ProductPage() {
                       )}
                     </TableCell>
                   );
+                } if (columnKey === "action") {
+                    return <TableCell>
+                        <Button variant="flat" color="warning">
+                            Edit
+                        </Button>
+                    </TableCell>
                 } else {
                   return <TableCell>{getKeyValue(item, columnKey)}</TableCell>;
                 }
