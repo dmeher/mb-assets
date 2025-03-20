@@ -1,0 +1,19 @@
+.custom-toast-css > div > div {
+  width: 25%;
+}
+
+/* .custom-upload-imageinput [type="file"]::file-selector-button {
+  height: 12rem;
+} */
+
+input[type="file"]::-webkit-file-upload-button {
+  /* Your button styles here */
+  background-color: #007bff; /* Example button color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  /* Add more styles as needed */
+}

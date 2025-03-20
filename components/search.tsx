@@ -200,7 +200,7 @@ export default function SearchProduct({
                   alt={item.product_name}
                   className="flex-shrink-0"
                   size="sm"
-                  src={item.image_url ?? ""}
+                  src={item.images?.[0].imageUrl ?? ""}
                 />
                 <div className="flex flex-col">
                   <span className="text-small">{item.product_name}</span>

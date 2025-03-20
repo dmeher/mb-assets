@@ -6,29 +6,32 @@ import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Form } from "@heroui/form";
 
-interface FieldInvalid {
-  isInvalid: boolean;
+interface FieldData {
+  isValid: boolean;
   errorMessage: string;
+  value: string;
+  showError: boolean;
 }
 
-interface FormValid {
-  mobile: FieldInvalid;
-  password: FieldInvalid;
+interface FormData {
+  mobile: FieldData;
+  password: FieldData;
 }
 
 export default function LoginPage() {
   const mobileNoRegEx = "^[6-9]\\d{9}$";
-  const [isLoginEnable, setIsLoginEnable] = useState<boolean>(false);
-  const [mobileNumber, setMobileNumber] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [isFormValid, setIsFormValid] = useState<FormValid>({
+  const [formData, setFormData] = useState<FormData>({
     mobile: {
-      isInvalid: false,
+      isValid: false,
       errorMessage: "Please enter a valid mobile number.",
+      value: "",
+      showError: false,
     },
     password: {
-      isInvalid: false,
+      isValid: false,
       errorMessage: "Password must be at least 5 characters long.",
+      value: "",
+      showError: false,
     },
   });
   const router = useRouter();
@@ -49,80 +52,130 @@ export default function LoginPage() {
     }
   };
 
-  const setMobileNoInvalid = (isInvalid: boolean) => {
-    setIsFormValid((prev) => ({
+  const setMobileNoValid = (isValid: boolean) => {
+    setFormData((prev) => ({
       ...prev,
       mobile: {
         ...prev.mobile,
-        isInvalid: isInvalid,
+        isValid,
       },
     }));
   };
 
-  const setPasswordInvalid = (isInvalid: boolean) => {
-    setIsFormValid((prev) => ({
+  const setPasswordValid = (isValid: boolean) => {
+    setFormData((prev) => ({
       ...prev,
       password: {
         ...prev.password,
-        isInvalid: isInvalid,
+        isValid,
+      },
+    }));
+  };
+
+  const setMobileNoShowError = (showError: boolean) => {
+    setFormData((prev) => ({
+      ...prev,
+      mobile: {
+        ...prev.mobile,
+        showError,
+      },
+    }));
+  };
+
+  const setPasswordShowError = (showError: boolean) => {
+    setFormData((prev) => ({
+      ...prev,
+      password: {
+        ...prev.password,
+        showError,
+      },
+    }));
+  };
+
+  const setMobileNo = (value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      mobile: {
+        ...prev.mobile,
+        value,
+      },
+    }));
+  };
+
+  const setPassword = (value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      password: {
+        ...prev.password,
+        value,
       },
     }));
   };
 
   const validate = (mobileNumber: string, password: string) => {
-    if (validateMobileNo(mobileNumber) && validatePassword(password)) {
-      setIsLoginEnable(true);
+    if (validateMobileNo(mobileNumber)) {
+      setMobileNoValid(true);
     } else {
-      setIsLoginEnable(false);
+      setMobileNoValid(false);
+    }
+
+    if (validatePassword(password)) {
+      setPasswordValid(true);
+    } else {
+      setPasswordValid(false);
     }
   };
 
   const onMobileNoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setMobileNumber(event.target.value);
-    setMobileNoInvalid(false);
-    validate(event.target.value, password);
+    setMobileNo(event.target.value);
+    setMobileNoShowError(false);
+    validate(event.target.value, formData.password.value);
   };
 
   const onPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
-    setPasswordInvalid(false);
-    validate(mobileNumber, event.target.value);
+    setPasswordShowError(false);
+    validate(formData.mobile.value, event.target.value);
   };
 
   const onPasswordBlur = () => {
-    if (password.length) {
-      if (validatePassword(password)) {
-        setPasswordInvalid(false);
+    if (formData.password.value.length) {
+      if (validatePassword(formData.password.value)) {
+        setPasswordValid(true);
+        setPasswordShowError(false);
       } else {
-        setPasswordInvalid(true);
+        setPasswordValid(false);
+        setPasswordShowError(true);
       }
     } else {
-      setPasswordInvalid(false);
+      setPasswordValid(false);
+      setPasswordShowError(false);
     }
   };
 
   const onMobileBlur = () => {
-    if (mobileNumber.length) {
-      if (validateMobileNo(mobileNumber)) {
-        setMobileNoInvalid(false);
+    if (formData.mobile.value.length) {
+      if (validateMobileNo(formData.mobile.value)) {
+        setMobileNoValid(true);
+        setMobileNoShowError(false);
       } else {
-        setMobileNoInvalid(true);
+        setMobileNoValid(false);
+        setMobileNoShowError(true);
       }
     } else {
-      setMobileNoInvalid(false);
+      setMobileNoValid(false);
+      setMobileNoShowError(false);
     }
   };
 
   const resetOnClearMobileNo = () => {
-    setMobileNumber("");
-    setMobileNoInvalid(true);
-    setIsLoginEnable(false);
+    setMobileNo("");
+    setMobileNoValid(false);
   };
 
   const resetOnClearPassword = () => {
     setPassword("");
-    setPasswordInvalid(true);
-    setIsLoginEnable(false);
+    setPasswordValid(false);
   };
 
   const onLogin = (event: FormEvent<HTMLFormElement>) => {
@@ -149,8 +202,8 @@ export default function LoginPage() {
             fullWidth
             pattern={mobileNoRegEx}
             validationBehavior="aria"
-            isInvalid={isFormValid.mobile.isInvalid}
-            errorMessage={isFormValid.mobile.errorMessage}
+            isInvalid={!formData.mobile.isValid && formData.mobile.showError}
+            errorMessage={formData.mobile.errorMessage}
             isClearable
             onChange={onMobileNoChange}
             onBlur={onMobileBlur}
@@ -176,8 +229,10 @@ export default function LoginPage() {
             className="w-[100%] tracking-widest"
             fullWidth
             validationBehavior="aria"
-            isInvalid={isFormValid.password.isInvalid}
-            errorMessage={isFormValid.password.errorMessage}
+            isInvalid={
+              !formData.password.isValid && formData.password.showError
+            }
+            errorMessage={formData.password.errorMessage}
             isClearable
             onChange={onPasswordChange}
             onBlur={onPasswordBlur}
@@ -194,7 +249,7 @@ export default function LoginPage() {
             color="primary"
             fullWidth
             className="font-bold tracking-[.25rem] h-[3rem] text-large"
-            isDisabled={!isLoginEnable}
+            isDisabled={!formData.mobile.isValid || !formData.password.isValid}
             type="submit"
           >
             Login
