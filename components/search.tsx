@@ -194,16 +194,16 @@ export default function SearchProduct({
           onSelectionChange={onProductSelect}
         >
           {(item) => (
-            <ListboxItem
-              key={item.product_id}
-              textValue={item.product_name}
-            >
+            <ListboxItem key={item.product_id} textValue={item.product_name}>
               <div className="flex gap-2 items-center">
                 <Avatar
                   alt={item.product_name}
                   className="flex-shrink-0"
                   size="lg"
-                  src={item.images?.[0].imageUrl ?? ""}
+                  src={
+                    item.images?.filter((img) => img.isThumbnail)?.[0]
+                      ?.imageUrl ?? ""
+                  }
                 />
                 <div className="flex flex-col">
                   <span className="text-small">{item.product_name}</span>
