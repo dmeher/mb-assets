@@ -164,7 +164,7 @@ export default function SearchProduct({
   };
 
   return (
-    <div className="w-[80%]">
+    <div className="w-[95%]">
       <Input
         variant="faded"
         startContent={
@@ -183,7 +183,7 @@ export default function SearchProduct({
       {searchResult.length > 0 && (
         <Listbox
           classNames={{
-            base: "max-w-xs bg-default-200 mt-[.25rem] rounded-lg",
+            base: "bg-default-200 mt-[.25rem] rounded-lg",
             list: "max-h-[300px] overflow-scroll",
           }}
           defaultSelectedKeys={["1"]}
@@ -194,12 +194,15 @@ export default function SearchProduct({
           onSelectionChange={onProductSelect}
         >
           {(item) => (
-            <ListboxItem key={item.product_id} textValue={item.product_name}>
+            <ListboxItem
+              key={item.product_id}
+              textValue={item.product_name}
+            >
               <div className="flex gap-2 items-center">
                 <Avatar
                   alt={item.product_name}
                   className="flex-shrink-0"
-                  size="sm"
+                  size="lg"
                   src={item.images?.[0].imageUrl ?? ""}
                 />
                 <div className="flex flex-col">
