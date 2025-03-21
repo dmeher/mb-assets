@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import { ImageFile, ProductImagesPayload } from "@/app/admin/products/page";
 import { buffer } from "stream/consumers";
 
-const uploadDir = path.join(process.cwd(), "public", "uploads");
+const uploadDir = path.join(process.cwd(), "public", "tmp");
 
 async function writeArrayBufferToFile(
   arrayBuffer: ArrayBuffer,
